@@ -36,8 +36,14 @@ class ThrowableWrapperException extends Exception
         $this->originalClass = get_class($throwable);
         $this->originalThrowable = $throwable;
 
+        // Include original file and line in message to preserve visibility
+        $message = $throwable->getMessage();
+        if ($throwable->getFile() !== '' && $throwable->getLine() > 0) {
+            $message .= ' in ' . $throwable->getFile() . ':' . $throwable->getLine();
+        }
+
         parent::__construct(
-            $throwable->getMessage(),
+            $message,
             is_int($throwable->getCode()) ? $throwable->getCode() : 0,
             $throwable->getPrevious()
         );
