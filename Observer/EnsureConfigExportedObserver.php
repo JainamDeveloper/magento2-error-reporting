@@ -60,7 +60,8 @@ class EnsureConfigExportedObserver implements ObserverInterface
                 );
 
                 // Attempt to export configuration
-                $result = $this->configStorage->exportConfig();
+                $config = $this->configStorage->exportConfig();
+                $result = $config !== null && $this->configStorage->saveConfig($config);
 
                 if ($result) {
                     $this->logger->info(
