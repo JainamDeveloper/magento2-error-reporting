@@ -14,7 +14,7 @@
              module="Hryvinskyi_ErrorReporting"
              sortOrder="999"
              parent="Magento_Backend::system"
-             action="hryvinskyi_errorreporting/errorlog/index"
+             action="errorreporting/errorlog/index"
              resource="Hryvinskyi_ErrorReporting::errorlog"/>
     </menu>
 </config>
